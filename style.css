@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Fira+Code:wght@400;700&display=swap');
+
+:root {
+    --bg-color: #0a0a0f;
+    --panel-bg: #12121a;
+    --accent-neon: #ff3333;
+    --cyber-cyan: #00f0ff;
+    --cyber-yellow: #ffea00;
+    --text-primary: #f0f0f5;
+    --text-muted: #6c6c84;
+    --border-style: 2px solid var(--accent-neon);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Fira Code', monospace;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 9999;
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none;
+}
+
+.status-bar {
+    background: #000;
+    border-bottom: var(--border-style);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--cyber-cyan);
+    letter-spacing: 1px;
+}
+
+.status-online::before {
+    content: "●";
+    color: #00ff66;
+    margin-right: 6px;
+    display: inline-block;
+    animation: blink 1s infinite alternate;
+}
+
+.portfolio-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.glitch-wrapper {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.glitch-title {
+    font-family: 'Share Tech Mono', sans-serif;
+    font-size: 64px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    position: relative;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+.glitch-title::before, .glitch-title::after {
+    content: "INTERFACE v1.0";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-color);
+}
+
+.glitch-title::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--cyber-cyan);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-title::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--accent-neon);
+    clip: rect(85px, 450px, 140px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+.subtitle {
+    color: var(--cyber-yellow);
+    font-size: 18px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    border-left: 3px solid var(--cyber-yellow);
+    padding-left: 10px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 902px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cyber-panel {
+    background: var(--panel-bg);
+    border: 2px solid var(--text-muted);
+    padding: 30px;
+    position: relative;
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.8);
+    transition: all 0.3s ease;
+}
+
+.cyber-panel.primary-panel {
+    border-color: var(--accent-neon);
+    box-shadow: 8px 8px 0px var(--accent-neon);
+}
+
+.panel-tag {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    background: var(--accent-neon);
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.cyber-panel.secondary-panel .panel-tag {
+    background: var(--cyber-cyan);
+    color: #000;
+}
+
+h2.section-heading {
+    font-family: 'Share Tech Mono', sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+}
+
+h2.section-heading::before {
+    content: "// ";
+    color: var(--accent-neon);
+    margin-right: 5px;
+}
+
+p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.cyber-btn {
+    display: inline-block;
+    background: transparent;
+    color: var(--accent-neon);
+    border: 2px solid var(--accent-neon);
+    padding: 12px 24px;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    box-shadow: 4px 4px 0px rgba(255, 51, 51, 0.2);
+}
+
+.cyber-btn:hover {
+    background: var(--accent-neon);
+    color: #fff;
+    box-shadow: 0px 0px 15px rgba(255, 51, 51, 0.6);
+    transform: translate(-2px, -2px);
+}
+
+.cyber-btn::after {
+    content: " ➔";
+}
+
+.project-preview-box {
+    background: #161622;
+    border: 1px dashed var(--accent-neon);
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-preview-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 51, 51, 0.15) 0%, transparent 65%);
+    animation: mistFloating 8s infinite alternate ease-in-out;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #2a2a3a;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.project-title {
+    font-size: 18px;
+    color: var(--cyber-cyan);
+}
+
+.project-tech-badges span {
+    display: inline-block;
+    font-size: 10px;
+    background: #252538;
+    padding: 2px 6px;
+    margin-right: 5px;
+    color: var(--text-muted);
+    border: 1px solid #3c3c54;
+}
+
+.skill-list-item {
+    list-style: none;
+    margin-bottom: 12px;
+    font-size: 13px;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.skill-bar {
+    height: 6px;
+    background: #1e1e2f;
+    border: 1px solid #333;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: var(--cyber-cyan);
+}
+
+.skill-progress.red-bar {
+    background: var(--accent-neon);
+}
+
+.terminal-box {
+    background: #000;
+    font-family: 'Fira Code', monospace;
+    padding: 15px;
+    border: 1px solid #222;
+    color: #00ff66;
+    font-size: 12px;
+    margin-top: 30px;
+    box-shadow: inset 0 0 10px rgba(0,255,102,0.1);
+}
+
+@keyframes mistFloating {
+    0% { transform: translate(-5%, -5%) rotate(0deg) scale(1); }
+    50% { transform: translate(5%, 8%) rotate(5deg) scale(1.1); }
+    100% { transform: translate(-2%, 5%) rotate(-5deg) scale(1); }
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(31px, 9999px, 94px, 0); }
+    10% { clip: rect(112px, 9999px, 76px, 0); }
+    20% { clip: rect(85px, 9999px, 5px, 0); }
+    30% { clip: rect(27px, 9999px, 115px, 0); }
+    40% { clip: rect(73px, 9999px, 29px, 0); }
+    50% { clip: rect(118px, 9999px, 142px, 0); }
+    60% { clip: rect(9px, 9999px, 53px, 0); }
+    70% { clip: rect(67px, 9999px, 88px, 0); }
+    80% { clip: rect(120px, 9999px, 11px, 0); }
+    90% { clip: rect(44px, 9999px, 134px, 0); }
+    100% { clip: rect(2px, 9999px, 60px, 0); }
+}
+
+@keyframes glitch-anim2 {
+    0% { clip: rect(76px, 9999px, 116px, 0); }
+    11% { clip: rect(13px, 9999px, 65px, 0); }
+    22% { clip: rect(122px, 9999px, 140px, 0); }
+    33% { clip: rect(48px, 9999px, 8px, 0); }
+    44% { clip: rect(94px, 9999px, 53px, 0); }
+    55% { clip: rect(29px, 9999px, 112px, 0); }
+    66% { clip: rect(138px, 9999px, 22px, 0); }
+    77% { clip: rect(5px, 9999px, 97px, 0); }
+    88% { clip: rect(81px, 9999px, 126px, 0); }
+    100% { clip: rect(19px, 9999px, 49px, 0); }
+}
